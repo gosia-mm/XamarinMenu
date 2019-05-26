@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinMenu.AddItemPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Picker SelectedItem="{Binding Category}">
+                    <Picker.Items>
+                        <x:String>Przystawki</x:String>
+                        <x:String>Zupy</x:String>
+                        <x:String>Dania główne</x:String>
+                        <x:String>Desery</x:String> 
+                        <x:String>Napoje</x:String>
+                    </Picker.Items>
+                </Picker>
+                <Editor Placeholder="Nazwa" x:Name="nameEdit" Text="{Binding Name}" HeightRequest="100" />
+                <Editor Placeholder="Opis" x:Name="descriptionEdit" Text="{Binding Description}" HeightRequest="100" />
+                <Editor Placeholder="Gramatura" x:Name="weightEdit" Text="{Binding Weight}" HeightRequest="100" />
+                <Editor Placeholder="Cena" x:Name="priceEdit" Text="{Binding Price}" HeightRequest="100" />
+                <StackLayout>
+                    <Image x:Name="imgMenuItem" Source="Assets/pobrane.jpg" HeightRequest="300" WidthRequest="250"/>
+                    <Editor Placeholder="Nazwa zdjęcia" Text="{Binding Image}"/>
+                    <Button x:Name="BtnChooseImg" Clicked="BtnChooseImg_Clicked" Text="Wybierz zdjęcie"/>
+                </StackLayout>
+                <Button Text="Dodaj" Clicked="BtnAddNewItem_Clicked"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

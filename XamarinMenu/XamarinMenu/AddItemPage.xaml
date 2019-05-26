@@ -5,6 +5,7 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
+                <Label>Kategoria</Label>
                 <Picker SelectedItem="{Binding Category}">
                     <Picker.Items>
                         <x:String>Przystawki</x:String>
@@ -14,10 +15,14 @@
                         <x:String>Napoje</x:String>
                     </Picker.Items>
                 </Picker>
-                <Editor Placeholder="Nazwa" x:Name="nameEdit" Text="{Binding Name}" HeightRequest="100" />
-                <Editor Placeholder="Opis" x:Name="descriptionEdit" Text="{Binding Description}" HeightRequest="100" />
-                <Editor Placeholder="Gramatura" x:Name="weightEdit" Text="{Binding Weight}" HeightRequest="100" />
-                <Editor Placeholder="Cena" x:Name="priceEdit" Text="{Binding Price}" HeightRequest="100" />
+                <Label>Nazwa</Label>
+                <Editor x:Name="nameEdit" Text="{Binding Name}"/>
+                <Label>Opis</Label>
+                <Editor x:Name="descriptionEdit" Text="{Binding Description}" HeightRequest="100"/>
+                <Label>Gramatura</Label>
+                <Editor x:Name="weightEdit" Text="{Binding Weight}" HeightRequest="100" />
+                <Label>Cena</Label>
+                <Editor x:Name="priceEdit" Text="{Binding Price}" HeightRequest="100" />
                 <StackLayout>
                     <Image x:Name="imgMenuItem" Source="Assets/pobrane.jpg" HeightRequest="300" WidthRequest="250"/>
                     <Editor Placeholder="Nazwa zdjęcia" Text="{Binding Image}"/>

@@ -13,9 +13,9 @@ namespace XamarinMenu.Models
 
     public class MenuGroups
     {
-        public static List<MenuGroup> ToDosGroupsList(List<MenuItem> menuItems)
+        public static List<MenuGroup> MenuGroupsList(List<MenuItem> menuItems)
         {
-            var toDosGroups = new List<MenuGroup>();
+            var menuGroups = new List<MenuGroup>();
 
             var groupsNames = menuItems.Select(mi => mi.Category).Distinct().OrderBy(mi => mi);
 
@@ -28,10 +28,10 @@ namespace XamarinMenu.Models
                     ShortTitle = groupName == null ? "Brak" : groupName,
                 };
                 newGroup.AddRange(menuItemsInGroup); 
-                toDosGroups.Add(newGroup); 
+                menuGroups.Add(newGroup); 
             }
 
-            return toDosGroups;
+            return menuGroups;
         }
     }
 }

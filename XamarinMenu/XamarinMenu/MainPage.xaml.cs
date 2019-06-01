@@ -25,13 +25,24 @@ namespace XamarinMenu
             menuItems.ForEach(td => td.Image = Path.Combine(Environment.GetFolderPath(
                     Environment.SpecialFolder.LocalApplicationData), td.Image + ".jpg"));
 
-            menuListView.ItemsSource = MenuGroups.ToDosGroupsList(menuItems);
+            menuListView.ItemsSource = MenuGroups.MenuGroupsList(menuItems);
         }
-
         async private void AddItem_Clicked(object sender, EventArgs e)
         {
             //ToDo nowy = new ToDo();
             await Navigation.PushAsync(new AddItemPage()
+            {
+            });
+        }
+        async private void MenuView_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MenuPage()
+            {
+            });
+        }
+        async private void AddOrder_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new AddOrderPage()
             {
             });
         }

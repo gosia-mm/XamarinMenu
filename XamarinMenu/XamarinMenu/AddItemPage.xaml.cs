@@ -14,7 +14,7 @@ namespace XamarinMenu
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class AddItemPage : ContentPage
 	{
-        XamarinMenu.Models.MenuItem newMenuItem;
+        FoodItem newMenuItem;
 		public AddItemPage ()
 		{
 			InitializeComponent ();
@@ -23,13 +23,13 @@ namespace XamarinMenu
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            newMenuItem = new XamarinMenu.Models.MenuItem() { Name = "", Description = "", Category = "Osobiste" };
+            newMenuItem = new FoodItem() { Name = "", Description = ""};
             BindingContext = newMenuItem;
         }
 
         async private void BtnAddNewItem_Clicked(object sender, EventArgs e)
         {
-            await App.DB.addOrUpdateMenuItemAsync(newMenuItem);
+            await App.DB.addOrUpdateFoodItemAsync(newMenuItem);
             await Navigation.PopAsync();
         }
 
@@ -49,6 +49,28 @@ namespace XamarinMenu
             }
 
             BtnChooseImg.IsEnabled = true;
+        }
+
+        async private void AddItem_Clicked(object sender, EventArgs e)
+        {
+            //ToDo nowy = new ToDo();
+            await Navigation.PushAsync(new AddItemPage()
+            {
+            });
+        }
+        async private void MenuView_Clicked(object sender, EventArgs e)
+        {
+
+            await Navigation.PushAsync(new MenuPage()
+            {
+            });
+        }
+        async private void AddOrder_Clicked(object sender, EventArgs e)
+        {
+            var foodItems = await App.DB.getFoodItemsAsync();
+            await Navigation.PushAsync(new AddOrderPage(foodItems)
+            {
+            });
         }
     }
 }

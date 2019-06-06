@@ -5,22 +5,18 @@
              x:Class="XamarinMenu.MainPage">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add to menu" Clicked="AddItem_Clicked" />
+        <ToolbarItem Order="Primary" Icon="newOrderIcon.png" Text="Dodaj zamówienie" Clicked="AddOrder_Clicked"/>
+        <ToolbarItem Order="Primary" Icon="newFoodIcon.png" Text="Dodaj do menu" Clicked="AddItem_Clicked" />
+        <ToolbarItem Order="Primary" Icon="menuIcon.png" Text="Wyświetl menu" Clicked="MenuView_Clicked"/>
     </ContentPage.ToolbarItems>
-    
-    <StackLayout>
-        <!-- Place new controls here -->
-        <!--<Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />-->
 
+    <StackLayout>
         <ListView x:Name="menuListView" Margin="30" IsGroupingEnabled="True" GroupDisplayBinding="{Binding Title}" GroupShortNameBinding="{Binding ShortTitle}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout>
                             <Image Source="{Binding Image}" HeightRequest="50"/>
-                            <BoxView Color="Navy" WidthRequest="50" HeightRequest="50"/>
                             <Label Text="{Binding Name}"></Label>
                             <Label Text="{Binding Description}"></Label>
                         </StackLayout>
@@ -28,7 +24,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        
+
     </StackLayout>
 
 </ContentPage>

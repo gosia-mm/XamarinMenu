@@ -9,15 +9,15 @@ namespace XamarinMenu
 {
     public partial class App : Application
     {
-        private static MenuItemsDatabase db; // przechowywanie obiektu operowania na bazie danych
+        private static FoodItemsDatabase db; // przechowywanie obiektu operowania na bazie danych
 
-        public static MenuItemsDatabase DB
+        public static FoodItemsDatabase DB
         {
             get
             {
                 if (db == null) // utworzenie obiektu dostępu do bazy danych - ścieżka do predefiniowanego folderu lokalnego urządzenia przenośnego
                 {
-                    db = new MenuItemsDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "MenuItems.db3"));
+                    db = new FoodItemsDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "FoodItems.db3"));
                 }
                 return db;
             }

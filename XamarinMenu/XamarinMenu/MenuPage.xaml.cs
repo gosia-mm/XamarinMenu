@@ -4,19 +4,21 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using Xamarin.Forms;
-using XamarinMenu.Data;
+using Xamarin.Forms.Xaml;
 using XamarinMenu.Models;
 using XamarinMenu.ViewModels;
 
 namespace XamarinMenu
 {
-    public partial class MainPage : ContentPage
-    {
-        public MainPage()
-        {
-            InitializeComponent();
-        }
+	[XamlCompilation(XamlCompilationOptions.Compile)]
+	public partial class MenuPage : ContentPage
+	{
+		public MenuPage ()
+		{
+			InitializeComponent ();
+		}
 
         protected async override void OnAppearing()
         {
@@ -26,15 +28,12 @@ namespace XamarinMenu
             foodItems.ForEach(td => td.Image = Path.Combine(Environment.GetFolderPath(
                     Environment.SpecialFolder.LocalApplicationData), td.Image + ".jpg"));
 
+            // menuListView.ItemsSource = MenuGroups.MenuGroupsList(foodItems);  pierwotna wersja z zajęć
             var menugroupsvm = new MenuGroupsViewModel(foodItems);
 
             menuListView.ItemsSource = menugroupsvm.MenuGroups;
-
-
-
-
-            // menuListView.ItemsSource = MenuGroups.MenuGroupsList(foodItems);   pierwotna wersja z zajęć
         }
+
         async private void AddItem_Clicked(object sender, EventArgs e)
         {
             //ToDo nowy = new ToDo();
@@ -44,6 +43,7 @@ namespace XamarinMenu
         }
         async private void MenuView_Clicked(object sender, EventArgs e)
         {
+            
             await Navigation.PushAsync(new MenuPage()
             {
             });

@@ -1,16 +1,16 @@
-﻿using System;
+﻿using SQLite;
+using SQLiteNetExtensions.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using SQLite;
-using SQLiteNetExtensions.Attributes;
 
 namespace XamarinMenu.Models
 {
-    [Table("MenuItems")]
-    public class MenuItem
+    [Table("FoodItems")]
+    public class FoodItem
     {
         [PrimaryKey, AutoIncrement]
-        public int MenuItemID { get; set; }
+        public int FoodItemID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public int Weight { get; set; }

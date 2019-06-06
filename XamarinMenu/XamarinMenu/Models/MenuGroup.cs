@@ -5,33 +5,9 @@ using System.Linq;
 
 namespace XamarinMenu.Models
 {
-    public class MenuGroup : List<MenuItem>
+    public class MenuGroup : List<FoodItem>
     {
         public string Title { get; set; }
         public string ShortTitle { get; set; }
-    }
-
-    public class MenuGroups
-    {
-        public static List<MenuGroup> MenuGroupsList(List<MenuItem> menuItems)
-        {
-            var menuGroups = new List<MenuGroup>();
-
-            var groupsNames = menuItems.Select(mi => mi.Category).Distinct().OrderBy(mi => mi);
-
-            foreach (var groupName in groupsNames)
-            {
-                var menuItemsInGroup = menuItems.Where(t => t.Category == groupName);
-                var newGroup = new MenuGroup() 
-                {
-                    Title = groupName == null ? "Brak" : groupName,
-                    ShortTitle = groupName == null ? "Brak" : groupName,
-                };
-                newGroup.AddRange(menuItemsInGroup); 
-                menuGroups.Add(newGroup); 
-            }
-
-            return menuGroups;
-        }
     }
 }

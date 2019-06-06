@@ -14,7 +14,7 @@ namespace XamarinMenu.Models
         public double TotalPrice { get; set; }
         public DateTime CreatedDate { get; set; }
 
-        [ManyToMany(typeof(MenuItem))]
-        public List<MenuItem> MenuItems { get; set; }
+        [ManyToMany(typeof(FoodItem))]
+        public List<FoodItem> FoodItems { get; set; }
     }
 }

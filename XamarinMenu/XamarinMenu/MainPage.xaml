@@ -5,9 +5,9 @@
              x:Class="XamarinMenu.MainPage">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Dodaj zamówienie" Clicked="AddOrder_Clicked"/>
-        <ToolbarItem Text="Dodaj do menu" Clicked="AddItem_Clicked" />
-        <ToolbarItem Text="Wyświetl menu" Clicked="MenuView_Clicked"/>
+        <ToolbarItem Order="Primary" Icon="newOrderIcon.png" Text="Dodaj zamówienie" Clicked="AddOrder_Clicked"/>
+        <ToolbarItem Order="Primary" Icon="newFoodIcon.png" Text="Dodaj do menu" Clicked="AddItem_Clicked" />
+        <ToolbarItem Order="Primary" Icon="menuIcon.png" Text="Wyświetl menu" Clicked="MenuView_Clicked"/>
     </ContentPage.ToolbarItems>
 
     <StackLayout>
@@ -17,7 +17,6 @@
                     <ViewCell>
                         <StackLayout>
                             <Image Source="{Binding Image}" HeightRequest="50"/>
-                            <BoxView Color="Navy" WidthRequest="50" HeightRequest="50"/>
                             <Label Text="{Binding Name}"></Label>
                             <Label Text="{Binding Description}"></Label>
                         </StackLayout>
@@ -25,6 +24,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
     </StackLayout>
 
 </ContentPage>

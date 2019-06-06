@@ -7,33 +7,33 @@ using XamarinMenu.Models;
 
 namespace XamarinMenu.Data
 {
-    public class MenuItemsDatabase
+    public class FoodItemsDatabase
     {
         private readonly SQLiteAsyncConnection connection; // przechowywanie połączenia z bazą danych
 
-        public MenuItemsDatabase(string dbPath)
+        public FoodItemsDatabase(string dbPath)
         {
             connection = new SQLiteAsyncConnection(dbPath); // utworzenie połączenia do bazy
-            connection.CreateTableAsync<MenuItem>().Wait(); // utworzenie tabelki z elementami menu w bazie jeśli nie istnieje
-            connection.CreateTableAsync<Order>().Wait(); 
+            connection.CreateTableAsync<FoodItem>().Wait(); // utworzenie tabelki z elementami menu w bazie jeśli nie istnieje
+            connection.CreateTableAsync<Order>().Wait();
             connection.CreateTableAsync<OrderWithFoodItem>().Wait();
         }
 
-        /* POZYCJE Z MENU - MENUITEMS */
-        public Task<List<MenuItem>> getMenuItemsAsync() // zwrócenie zadania pobrania wszystkich elementów menu asynchronicznie
+        /* POZYCJE Z MENU - FOODITEMS */
+        public Task<List<FoodItem>> getFoodItemsAsync() // zwrócenie zadania pobrania wszystkich elementów menu asynchronicznie
         {
-            return connection.Table<MenuItem>().ToListAsync(); 
+            return connection.Table<FoodItem>().ToListAsync();
         }
 
-        public Task<int> addOrUpdateMenuItemAsync(MenuItem item)
+        public Task<int> addOrUpdateFoodItemAsync(FoodItem item)
         {
-            if (item.MenuItemID == 0)
+            if (item.FoodItemID == 0)
                 return connection.InsertAsync(item);
             else
                 return connection.UpdateAsync(item);
         }
 
-        public Task<int> deleteMenuItemAsync(MenuItem item)
+        public Task<int> deleteFoodItemAsync(FoodItem item)
         {
             return connection.DeleteAsync(item);
         }

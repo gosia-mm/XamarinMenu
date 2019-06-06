@@ -8,8 +8,8 @@ namespace XamarinMenu.Models
 {
     class OrderWithFoodItem
     {
-        [ForeignKey(typeof(MenuItem))]
-        public int MenuItemID { get; set; }
+        [ForeignKey(typeof(FoodItem))]
+        public int FoodItemID { get; set; }
 
         [ForeignKey(typeof(Order))]
         public int OrderID { get; set; }

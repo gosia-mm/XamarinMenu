@@ -2,8 +2,16 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:XamarinMenu"
+             xmlns:converters="clr-namespace:XamarinMenu.Converters"
              x:Class="XamarinMenu.MainPage">
 
+    <ContentPage.Resources>
+        <converters:FontSizer x:Key="fontSizer"/>
+        <Style TargetType="ListView">
+            <Setter Property="BackgroundColor" Value="{StaticResource BackgroundAndroid}"/>
+        </Style>
+    </ContentPage.Resources>
+    
     <ContentPage.ToolbarItems>
         <ToolbarItem Order="Primary" Icon="newOrderIcon.png" Text="Dodaj zamówienie" Clicked="AddOrder_Clicked"/>
         <ToolbarItem Order="Primary" Icon="newFoodIcon.png" Text="Dodaj do menu" Clicked="AddItem_Clicked" />
@@ -11,7 +19,7 @@
     </ContentPage.ToolbarItems>
 
     <StackLayout>
-        <ListView x:Name="menuListView" Margin="30" IsGroupingEnabled="True" GroupDisplayBinding="{Binding Title}" GroupShortNameBinding="{Binding ShortTitle}">
+        <ListView x:Name="menuListView" Margin="30" ItemSelected="MenuListView_ItemSelected" IsGroupingEnabled="True" GroupDisplayBinding="{Binding Title}" GroupShortNameBinding="{Binding ShortTitle}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -24,7 +32,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-
+        <Slider x:Name="slider" Maximum="100"></Slider>
     </StackLayout>
 
 </ContentPage>

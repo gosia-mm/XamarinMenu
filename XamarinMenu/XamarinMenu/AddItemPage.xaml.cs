@@ -8,6 +8,8 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.IO;
 using XamarinMenu.DependencyInjection;
+using Plugin.Media;
+using Plugin.Media.Abstractions;
 
 namespace XamarinMenu
 {
@@ -70,6 +72,35 @@ namespace XamarinMenu
             var foodItems = await App.DB.getFoodItemsAsync();
             await Navigation.PushAsync(new AddOrderPage(foodItems)
             {
+            });
+        }
+
+        private async void BtnCamera_Clicked(object sender, EventArgs e)
+        {
+            await CrossMedia.Current.Initialize();
+
+            if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+            {
+                await DisplayAlert("Brak aparatu", "Urządzenie nie posiada aparatu", "OK");
+                return;
+            }
+
+            var file = await CrossMedia.Current.TakePhotoAsync(
+                new StoreCameraMediaOptions
+                {
+                    //SaveToAlbum = true,
+                    //Directory = "Sample", jeżeli chcemy konkretną ścieżkę
+                    //Name = "test.jpg"   ///plus można wkleić tutaj kod do ustawienia pliku jako wartość dla przepisu
+                });
+            if (file == null)
+                return;
+
+            // kod na wyświetlenie zrobionego zdjęcia
+            PrevPhoto.Source = ImageSource.FromStream(() =>
+            {
+                var stream = file.GetStream();
+                file.Dispose();
+                return stream;
             });
         }
     }
